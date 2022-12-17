@@ -52,12 +52,12 @@ function generatePassword() {
     console.log('User did not want to use uppercase letters.');
   }
 
-  var charactersConfirm = confirm('Do you want characters in your password?');
+  var charactersConfirm = confirm('Do you want special characters in your password?');
   if (charactersConfirm) {
     comboArray = comboArray.concat(charactersArray)
-    console.log(`User confirmed they want to use characters. (${charactersConfirm}) ${comboArray}`)
+    console.log(`User confirmed they want to use special characters. (${charactersConfirm}) ${comboArray}`)
   } else {
-    console.log('User did not want to use characters.');
+    console.log('User did not want to use special characters.');
   }
 
   var numberConfirm = confirm('Do you want numbers in your password?');
@@ -67,6 +67,24 @@ function generatePassword() {
   } else {
     console.log('User did not want to use numbers.');
   }
+
+  if ((lowerConfirm === false) && (upperConfirm === false) && (charactersConfirm === false) && (numberConfirm === false)) {
+    confirm('Please start again, you must choose at least one parameter for password value');
+    console.log('User was prompted to start over.');
+  }
+
+  var finalPassword = ''
+
+  console.log(lengthPrompt)
+
+  for (var i = 0; i < lengthPrompt; i++)
+    var random = Math.floor(Math.random() * comboArray.length);
+  finalPassword = random;
+
+  return finalPassword;
+
+  //why is there an incorrect password length being returned? 
+  //go over for loop in detail
+
 }
-console.log(comboArray)
-//lengthPrompt variable now stores user's numbe
+
