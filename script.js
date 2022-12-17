@@ -32,7 +32,7 @@ function generatePassword() {
   if ((lengthPrompt >= 8) && (lengthPrompt <= 128)) {
     console.log(`User choose password with length: ${lengthPrompt}`)
   } else {
-    console.log('User did not chose password with correct length');
+    console.log('User did not choose password with correct length');
     prompt('You get one more try- choose a length of at least 8 characters and no more than 128 characters', 'Type your number here');
   }
 
