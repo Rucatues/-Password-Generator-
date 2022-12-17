@@ -75,16 +75,18 @@ function generatePassword() {
 
   var finalPassword = ''
 
-  console.log(lengthPrompt)
+  console.log(lengthPrompt) //Double checks that the length picked is correct before generating password
 
-  for (var i = 0; i < lengthPrompt; i++)
+  for (var i = 0; i <= lengthPrompt; i++) {
     var random = Math.floor(Math.random() * comboArray.length);
-  finalPassword = random;
+
+    /*I am stuck here... Do I need to move the pw function down here?*/
+
+    finalPassword += comboArray[random];
+  };
 
   return finalPassword;
 
-  //why is there an incorrect password length being returned? 
-  //go over for loop in detail
 
-}
+};
 
