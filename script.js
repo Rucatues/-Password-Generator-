@@ -28,12 +28,20 @@ function generatePassword() {
     console.log('User was not ready to begin');
   }
 
+  // let lengthPrompt = prompt('Please choose a length of at least 8 characters and no more than 128 characters', 'Type your number here');
+  // while ((lengthPrompt >= 8) && (lengthPrompt <= 128)) {
+  //   console.log(`User choose password with length: ${lengthPrompt}`)
+  // } else {
+  //   console.log('User did not choose password with correct length');
+  //   prompt('You get one more try- choose a length of at least 8 characters and no more than 128 characters', 'Type your number here');
+  // }
+
   var lengthPrompt = prompt('Please choose a length of at least 8 characters and no more than 128 characters', 'Type your number here');
   if ((lengthPrompt >= 8) && (lengthPrompt <= 128)) {
     console.log(`User choose password with length: ${lengthPrompt}`)
   } else {
     console.log('User did not choose password with correct length');
-    prompt('You get one more try- choose a length of at least 8 characters and no more than 128 characters', 'Type your number here');
+    prompt('Please try again- choose a length of at least 8 characters and no more than 128 characters', 'Type your number here');
   }
 
   var lowerConfirm = confirm('Do you want lowercase letters in your password?');
@@ -79,9 +87,6 @@ function generatePassword() {
 
   for (var i = 0; i < lengthPrompt; i++) {
     var random = Math.floor(Math.random() * comboArray.length);
-
-    /*I am stuck here... Do I need to move the pw function down here?*/
-
     finalPassword += comboArray[random];
   };
 
