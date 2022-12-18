@@ -20,6 +20,8 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+//Here is the main function that generates the password. First you get a welcome message asking if you are ready to begin. 
+
 function generatePassword() {
   comboArray = [] //clears comboArray at the beginning of each button click. 
   var welcomeMsg = confirm('Welcome to the Password Generator! Are you ready to begin?');
@@ -30,12 +32,14 @@ function generatePassword() {
   }
 
 
+  // Then you need to choose a length for your password. It will keep asking you until you enter a number within the given parameters. 
 
   var lengthPrompt = prompt('Please choose a length of at least 8 characters and no more than 128 characters', 'Type your number here');
   while (lengthPrompt <= 8 || lengthPrompt >= 128) {
     lengthPrompt = prompt('Enter length again.');
   }
 
+  // The next four if statements are asking the user if they want certain characters in their password. 
 
   var lowerConfirm = confirm('Do you want lowercase letters in your password?');
   if (lowerConfirm) {
@@ -69,6 +73,8 @@ function generatePassword() {
     console.log('User did not want to use numbers.');
   }
 
+  // If they decline all of the types of characters, they will get a message stating that they have to choose at least one. 
+
   if ((lowerConfirm === false) && (upperConfirm === false) && (charactersConfirm === false) && (numberConfirm === false)) {
     var tryagain = confirm('Please start again, you must choose at least one parameter for password value');
     if (tryagain) { generatePassword() }
@@ -78,9 +84,15 @@ function generatePassword() {
     console.log('User was prompted to start over.');
   }
 
+  //empty variable set for the final password
+
   var finalPassword = ''
 
-  console.log(lengthPrompt) //Double checks that the length picked is correct before generating password
+  //Double checks that the length picked is correct before generating password
+
+  console.log(lengthPrompt)
+
+  // for loop randomizes the characters at the user's set length and reports it back into the final password. 
 
   for (var i = 0; i < lengthPrompt; i++) {
     var random = Math.floor(Math.random() * comboArray.length);
