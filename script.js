@@ -21,6 +21,7 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 function generatePassword() {
+  comboArray = [] //clears comboArray at the beginning of each button click. 
   var welcomeMsg = confirm('Welcome to the Password Generator! Are you ready to begin?');
   if (welcomeMsg) {
     console.log('User confirmed they are ready to begin.')
@@ -28,21 +29,13 @@ function generatePassword() {
     console.log('User was not ready to begin');
   }
 
-  // let lengthPrompt = prompt('Please choose a length of at least 8 characters and no more than 128 characters', 'Type your number here');
-  // while ((lengthPrompt >= 8) && (lengthPrompt <= 128)) {
-  //   console.log(`User choose password with length: ${lengthPrompt}`)
-  // } else {
-  //   console.log('User did not choose password with correct length');
-  //   prompt('You get one more try- choose a length of at least 8 characters and no more than 128 characters', 'Type your number here');
-  // }
+
 
   var lengthPrompt = prompt('Please choose a length of at least 8 characters and no more than 128 characters', 'Type your number here');
-  if ((lengthPrompt >= 8) && (lengthPrompt <= 128)) {
-    console.log(`User choose password with length: ${lengthPrompt}`)
-  } else {
-    console.log('User did not choose password with correct length');
-    prompt('Please try again- choose a length of at least 8 characters and no more than 128 characters', 'Type your number here');
+  while (lengthPrompt <= 8 || lengthPrompt >= 128) {
+    lengthPrompt = prompt('Enter length again.');
   }
+
 
   var lowerConfirm = confirm('Do you want lowercase letters in your password?');
   if (lowerConfirm) {
@@ -77,7 +70,11 @@ function generatePassword() {
   }
 
   if ((lowerConfirm === false) && (upperConfirm === false) && (charactersConfirm === false) && (numberConfirm === false)) {
-    confirm('Please start again, you must choose at least one parameter for password value');
+    var tryagain = confirm('Please start again, you must choose at least one parameter for password value');
+    if (tryagain) { generatePassword() }
+    else {
+      return "Thank you for using the password generator.";
+    }
     console.log('User was prompted to start over.');
   }
 
